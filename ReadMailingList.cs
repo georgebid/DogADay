@@ -6,12 +6,14 @@ using System.Text;
 
 namespace DogADay
 {
-    public class ReadMailingList
+    public class ReadMailingList : IEmail
     {
+        public string Email { get; set; }
 
-        static string listOfEmails= "C:\\Users\\Georgina.Bidder\\.vscode\\DogADay\\DogADayMailingList.csv";
 
-        public List<EmailCredentials> emailList
+        static string listOfEmails = "C:\\Users\\Georgina.Bidder\\.vscode\\DogADay\\DogADayMailingList.csv";
+
+        public List<IEmail> emailList
         {
             get; set;
         }
@@ -20,7 +22,7 @@ namespace DogADay
 
         public void ReadList()
         {
-            emailList = new List<EmailCredentials>();
+            emailList = new List<IEmail>();
             //make sure the list exists
             if (!File.Exists(listOfEmails))
             {
@@ -34,13 +36,13 @@ namespace DogADay
             {
                 Console.WriteLine(emailAddress);
 
-                EmailCredentials emailCredentials = new EmailCredentials();
+                IEmail getEmail = new ReadMailingList();
 
                 // set the property of EmailCredentials to the current email address
-                emailCredentials.Email = emailAddress;
+                getEmail.Email = emailAddress;
 
                 // Add the emails to a list to be read by a send email object
-                emailList.Add(emailCredentials);
+                emailList.Add(getEmail);
             }
         }
     }

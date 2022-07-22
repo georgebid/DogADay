@@ -18,7 +18,7 @@ namespace DogADay
 
             mailingList.ReadList();
 
-            List<EmailCredentials> emailList = mailingList.emailList;
+            List<IEmail> emailList = mailingList.emailList;
         }
     }
 }
