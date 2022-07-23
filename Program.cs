@@ -14,11 +14,12 @@ namespace DogADay
             
             Console.WriteLine(dogInfo.message);
 
-            ReadMailingList mailingList = new ReadMailingList();
+            //ReadMailingList mailingList = new ReadMailingList();
 
-            mailingList.ReadList();
 
-            List<IEmail> emailList = mailingList.emailList;
+            SendEmail sendEmail = new SendEmail();
+
+            sendEmail.SendEmails();
         }
     }
 }

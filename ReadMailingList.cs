@@ -38,7 +38,7 @@ namespace DogADay
 
                 IEmail getEmail = new ReadMailingList();
 
-                // set the property of EmailCredentials to the current email address
+                // set the property of IEmail to the current email address
                 getEmail.Email = emailAddress;
 
                 // Add the emails to a list to be read by a send email object
