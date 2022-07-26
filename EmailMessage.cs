@@ -3,22 +3,23 @@ using System.Collections.Generic;
 using System.Net.Mail;
 using System.Text;
 using System.Text.Json;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
 
 namespace DogADay
 {
     public class EmailMessage
     {
-        public MailMessage EmailContent(IEmail email)
+        public MailMessage EmailContent()
         {
             
             GetDog getDog = new GetDog();
             DogInfo dogInfo = JsonSerializer.Deserialize<DogInfo>(getDog.ApiInfo());
 
             StringBuilder mailBody = new StringBuilder();
-            mailBody.AppendLine($"<h1>Hey, {email.Email}</h1>");
+            //mailBody.AppendLine($"<h1>Hey, {email.Email}</h1>");
             mailBody.AppendLine($"<p>Here is your daily dose of Dog, Enjoy!</p>");
-            mailBody.AppendLine($"<html><body>test <img src= {dogInfo.message}> importhtml</body></html>");
+            mailBody.AppendLine($"<html><body> \n <img height=\"300\" src= {dogInfo.message}> </body></html>");
 
             var mailMessage = new MailMessage
             {
@@ -28,7 +29,7 @@ namespace DogADay
                 IsBodyHtml = true,
             };
 
-           mailMessage.To.Add(email.Email);
+           //mailMessage.To.Add(email.Email);
 
             return mailMessage;
         }

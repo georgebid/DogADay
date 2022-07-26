@@ -30,18 +30,23 @@ namespace DogADay
             ReadMailingList mailingList = new ReadMailingList();
             mailingList.ReadList();
 
-            List<IEmail> emailList = mailingList.emailList;
+            List<IEmail> emailList = mailingList.EmailList;
 
             // for each email in the mailing list, create the email message using the email that's passed in
             //
-            foreach (IEmail email in emailList)
-           {
-               var createdMessage = emailMessage.EmailContent(email);
-               emailCredentials.SetUpAndSendEmail(createdMessage);
-           }
-           // confirm the above has worked.
-            Console.WriteLine("Email sent.");
+            MailMessage createdMessage = new MailMessage();
 
+            createdMessage = emailMessage.EmailContent();
+
+            foreach (IEmail email in emailList)
+            {
+                createdMessage.To.Add(email.Email);
+            }
+            //moved out of the foreach loop so it doesn't create brand new emails for each email.
+            emailCredentials.SetUpAndSendEmail(createdMessage);
+
+            // confirm the above has worked.
+            Console.WriteLine("Email sent.");
         }
     }
 }

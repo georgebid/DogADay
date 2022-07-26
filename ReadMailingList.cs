@@ -13,7 +13,7 @@ namespace DogADay
 
         static string listOfEmails = "C:\\Users\\Georgina.Bidder\\.vscode\\DogADay\\DogADayMailingList.csv";
 
-        public List<IEmail> emailList
+        public List<IEmail> EmailList
         {
             get; set;
         }
@@ -22,7 +22,7 @@ namespace DogADay
 
         public void ReadList()
         {
-            emailList = new List<IEmail>();
+            EmailList = new List<IEmail>();
             //make sure the list exists
             if (!File.Exists(listOfEmails))
             {
@@ -42,7 +42,7 @@ namespace DogADay
                 getEmail.Email = emailAddress;
 
                 // Add the emails to a list to be read by a send email object
-                emailList.Add(getEmail);
+                EmailList.Add(getEmail);
             }
         }
     }
