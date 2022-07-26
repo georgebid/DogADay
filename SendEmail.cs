@@ -34,9 +34,8 @@ namespace DogADay
 
             // for each email in the mailing list, create the email message using the email that's passed in
             //
-            MailMessage createdMessage = new MailMessage();
 
-            createdMessage = emailMessage.EmailContent();
+            MailMessage createdMessage = emailMessage.EmailContent();
 
             foreach (IEmail email in emailList)
             {

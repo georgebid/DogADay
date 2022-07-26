@@ -17,6 +17,8 @@ namespace DogADay
             DogInfo dogInfo = JsonSerializer.Deserialize<DogInfo>(getDog.ApiInfo());
 
             StringBuilder mailBody = new StringBuilder();
+            // removed the below as it was causing issues looking for 'email' as it was removed as an argument.
+            // need a to change this to the users name.
             //mailBody.AppendLine($"<h1>Hey, {email.Email}</h1>");
             mailBody.AppendLine($"<p>Here is your daily dose of Dog, Enjoy!</p>");
             mailBody.AppendLine($"<html><body> \n <img height=\"300\" src= {dogInfo.message}> </body></html>");
