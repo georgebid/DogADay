@@ -13,8 +13,10 @@ namespace DogADay
 
             HttpClient client = new HttpClient();
 
+            // send a get request using the api and seriallize the results to a string and save the result in a variable
             var result = client.GetAsync(api).Result.Content.ReadAsStringAsync().Result;
             Console.WriteLine(result);
+            //return the result to be used elsewhere
             return result;
         }
     }

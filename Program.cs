@@ -8,18 +8,18 @@ namespace DogADay
     {
         static void Main(string[] args)
         {
-            GetDog getDog = new GetDog();
-            
-            DogInfo dogInfo= JsonSerializer.Deserialize<DogInfo>(getDog.ApiInfo());
-            
-            Console.WriteLine(dogInfo.message);
+           static void EmailDogPictures()
+            {
+                //GetDog getDog = new GetDog();
+               // DogInfo dogInfo = JsonSerializer.Deserialize<DogInfo>(getDog.ApiInfo());
 
-            //ReadMailingList mailingList = new ReadMailingList();
+                //Previously was writing the message to the console, but now this method is simply using an instance of the SendEmail
+                //class and calling the send email object.
+                SendEmail sendEmail = new SendEmail();
+                sendEmail.SendEmails();
+            }
 
-
-            SendEmail sendEmail = new SendEmail();
-
-            sendEmail.SendEmails();
+            EmailDogPictures();
         }
     }
 }

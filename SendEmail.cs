@@ -23,9 +23,6 @@ namespace DogADay
             EmailCredentials emailCredentials = new EmailCredentials();
             //instance of email message so that the email sent has the objects content.
             EmailMessage emailMessage = new EmailMessage();
-            // assigned the email message - and the content to a new variable called message. This is so it can be used
-            //within the sending method.
-            //var message = emailMessage.EmailContent();
 
             ReadMailingList mailingList = new ReadMailingList();
             mailingList.ReadList();
@@ -39,8 +36,11 @@ namespace DogADay
 
             foreach (IEmail email in emailList)
             {
-                createdMessage.To.Add(email.Email);
+                //changed to bcc for more privacy.
+                createdMessage.Bcc.Add(email.Email);
+     
             }
+          
             //moved out of the foreach loop so it doesn't create brand new emails for each email.
             emailCredentials.SetUpAndSendEmail(createdMessage);
 
